@@ -11,9 +11,8 @@ public class Validate extends  PasswordChecker{
 
     public void passwordIsValid(String password){
 
-        if(!passwordExist(password)){
-            logger.error("password should exist");
-        }
+    
+        
         if(!passwordLength(password)){
             logger.error("password should be 8 characters or longer");
         }
