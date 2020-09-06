@@ -18,6 +18,7 @@ public class PasswordChecker {
     static String checkDigits = ".*\\d+.*";
     static String checkLowerCase = ".*[a-z]+.*";
     static String checkUpperCase = ".*[A-Z]+.*";
+    static String checkSpecailChar = "[^\\w\\s]";
     
     public void printPasswordNotOkay() {
     	System.out.println("The password is neverOK if condition 1 and 2 are not met*");
@@ -38,7 +39,7 @@ public class PasswordChecker {
             throw new NoUpperCaseException();
         }else if(!password.matches(checkDigits)){
             throw new NoDigitException();
-		}else if(!password.matches(".*\\D.*") && !password.matches(".*\\W.*")){ 
+		}else if(!password.matches(checkSpecailChar)){ 
 			throw new NoSpecailCharacterException(); }
 			 
     }
@@ -53,7 +54,7 @@ public class PasswordChecker {
         if(password.matches(checkLowerCase)) {counter++;}
         if(password.matches(checkUpperCase)) {counter++;}
         if(password.matches(checkDigits)) {counter++;}
-		/* if(password.matches("\\D") && !password.matches("\\W")) {counter++;} */
+		if(password.matches(checkSpecailChar)) {counter++;} 
 
         if(counter < minimumNumberForPass){
             return false;
