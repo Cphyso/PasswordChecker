@@ -6,6 +6,7 @@ package com.umuzi.project;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 /**
  * @author Sifiso Mhlongo
@@ -17,74 +18,87 @@ class PasswordCheckerTest {
 	 * */
 	@Test
 	void passwordIsValidTest_NoDigitExceptionIsThrown() {
-		PasswordChecker password = new PasswordChecker();
-		Exception exception = assertThrows(NoDigitException.class, () ->{
-			password.passwordIsValid("qwertyu@QWERT");
+
+		assertThrows(NoDigitException.class, new Executable() {
+			@Override
+			public void execute() throws Throwable {
+				PasswordChecker password = new PasswordChecker();
+				password.passwordIsValid("oiuytreQWE@@dfg");
+			}
 		});
-		
 	}
 	/**
 	 * Test asserts NoLowerCase exception works
 	 * */
 	@Test
 	void passwordIsValidTest_NoLowerCaseExceptionIsThrown() {
-		PasswordChecker password = new PasswordChecker();
-		Exception exception = assertThrows(NoLowerCaseException.class, () ->{
-			password.passwordIsValid("QWERT@QWERT123");
+		assertThrows(NoLowerCaseException.class, new Executable() {
+			@Override
+			public void execute() throws Throwable {
+				PasswordChecker passwordChecker = new PasswordChecker();
+				passwordChecker.passwordIsValid("QW567ERT!@#$%QWER");
+			}
 		});
-		
 	}
 	/**
 	 * Test asserts NoUpperCase exception is working
 	 * */
 	@Test
 	void passwordIsValidTest_NoUpperCaseExceptionIsThrown() {
-		PasswordChecker password = new PasswordChecker();
-		Exception exception = assertThrows(NoUpperCaseException.class, () ->{
-			password.passwordIsValid("qwertyu@1234");
+		assertThrows(NoUpperCaseException.class, new Executable() {
+			@Override
+			public void execute() throws Throwable {
+				PasswordChecker password = new PasswordChecker();
+				password.passwordIsValid("rtyui98op#$%^&");
+			}
 		});
-		
 	}
 	/**
 	 * Test asserts NoSpecailChar exceptionn is functioning
 	 * */
 	@Test
 	void passwordIsValidTest_NoSpecailCharacterExceptionIsThrown() {
-		PasswordChecker password = new PasswordChecker();
-		Exception exception = assertThrows(NoSpecailCharacterException.class, () ->{
-			password.passwordIsValid("qwertyu123QWERT");
+		assertThrows(NoSpecialCharacterException.class, new Executable() {
+			@Override
+			public void execute() throws Throwable {
+				PasswordChecker password = new PasswordChecker();
+				password.passwordIsValid("QWERtyuio677");
+			}
 		});
-		
 	}
 	/**
 	 * Test asserts exception is thrown if password is empty
 	 * */
 	@Test
-	void emptyPassswordTest_ExceptionIsThrown() {
-		PasswordChecker password = new PasswordChecker();
-		Exception exception = assertThrows(Exception.class, () ->{
-			password.passwordIsValid("");
+	void emptyPasswordTest_ExceptionIsThrown() {
+		assertThrows(Exception.class, new Executable() {
+			@Override
+			public void execute() throws Throwable {
+				PasswordChecker passwordChecker = new PasswordChecker();
+				passwordChecker.passwordIsValid("");
+			}
 		});
-		
 	}
 	/**
 	 * Test assert exception is thrown if password length does not meet minimum length
 	 * */
 	@Test
 	void lengthTest_ExceptionIsThrown() {
-		PasswordChecker password = new PasswordChecker();
-		Exception exception = assertThrows(Exception.class, () ->{
-			password.passwordIsValid("qwertd4");
+		assertThrows(Exception.class, new Executable() {
+			@Override
+			public void execute() throws Throwable {
+				PasswordChecker passwordChecker = new PasswordChecker();
+				passwordChecker.passwordIsValid("fghj");
+			}
 		});
-		
 	}
 	/**
 	 * Test asserts method is counting number of condition met
 	 * */
 	@Test
 	void passwordIsOkayTest() {
-		PasswordChecker password = new PasswordChecker();
-		assertTrue(password.passwordIsOkay("QWert@393"));
-		//assertFalse(password.passwordIsOkay("QWert"));
+		PasswordChecker passwordChecker = new PasswordChecker();
+		boolean actual = passwordChecker.passwordIsOkay("GodFather@part3");
+		assertTrue(actual);
 	}
 }

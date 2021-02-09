@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-02-09T19:52:49.860898500Z</date>
+  <millis>1612900369860</millis>
+  <nanos>898500</nanos>
+  <sequence>0</sequence>
+  <logger>com.umuzi.project.PasswordChecker</logger>
+  <level>INFO</level>
+  <class>com.umuzi.project.Application</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>NoDigitException has occurred</message>
+  <exception>
+    <message>com.umuzi.project.NoDigitException</message>
+    <frame>
+      <class>com.umuzi.project.PasswordChecker</class>
+      <method>passwordIsValid</method>
+      <line>41</line>
+    </frame>
+    <frame>
+      <class>com.umuzi.project.Application</class>
+      <method>main</method>
+      <line>18</line>
+    </frame>
+  </exception>
+</record>
+</log>

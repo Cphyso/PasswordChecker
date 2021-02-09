@@ -1,0 +1,6 @@
+EError occurred : password should have at least one lowercase letter
+;The password is neverOK if condition 1 and 2 are not met*
+;The password is neverOK if condition 1 and 2 are not met*
+:Error occurred : password should have at least one digit
+FError occurred : password should have at least one special character
+EError occurred : password should have at least one uppercase letter
